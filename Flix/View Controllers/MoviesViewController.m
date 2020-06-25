@@ -8,9 +8,12 @@
 
 #import "MoviesViewController.h"
 
-@interface MoviesViewController ()
+@interface MoviesViewController () <UITableViewDelegate, UITableViewDataSource>
+// tableView outlet
+@property (strong, nonatomic) IBOutlet UITableView *tableView;
 // Declaring property to store array of movies
 @property (nonatomic, strong) NSArray *movies;
+
 @end
 
 @implementation MoviesViewController
@@ -18,7 +21,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-// fetching network request
+    //setting delegate and dataSource
+    self.tableView.dataSource = self;
+    self.tableView.delegate = self;
+    
+    // fetching network request
     [self fetchNetworkRequest];
     
 }
@@ -37,6 +44,9 @@
 
                // Get the array of movies and store in the property
                self.movies = dataDictionary[@"results"];
+               
+               // Reloading the data after network request is completed
+               [self.tableView reloadData];
            }
        }];
     [task resume];
@@ -51,5 +61,17 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+- (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
+    UITableViewCell *cell = [[UITableViewCell alloc] init];
+    NSDictionary *movie = self.movies[indexPath.row];
+    cell.textLabel.text = movie[@"title"];
+    return cell;
+}
+
+- (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return self.movies.count;
+}
+
 
 @end
