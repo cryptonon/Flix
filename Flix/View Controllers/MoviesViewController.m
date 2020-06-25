@@ -15,6 +15,8 @@
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 // Declaring property to store array of movies
 @property (nonatomic, strong) NSArray *movies;
+// Declaring property for refresh on scrolls
+@property (nonatomic, strong) UIRefreshControl *refreshControl;
 
 @end
 
@@ -29,6 +31,12 @@
     
     // fetching network request
     [self fetchNetworkRequest];
+    
+    // Scroll to refresh
+    self.refreshControl = [[UIRefreshControl alloc] init];
+    [self.refreshControl addTarget:self action:@selector(fetchNetworkRequest) forControlEvents:UIControlEventValueChanged];
+    [self.tableView insertSubview:self.refreshControl atIndex:0];
+    
     
 }
 
@@ -50,6 +58,7 @@
                // Reloading the data after network request is completed
                [self.tableView reloadData];
            }
+        [self.refreshControl endRefreshing];
        }];
     [task resume];
 }
