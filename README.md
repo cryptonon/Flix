@@ -26,7 +26,10 @@ Please list two areas of the assignment you'd like to **discuss further with you
 
 Here's a walkthrough of implemented user stories:
 
-<img src='https://recordit.co/wAlhaMEDRK' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+1. <img src='http://g.recordit.co/AwLxcxBeUP.gif' title='Network Error and Loading' width='' alt='' />
+
+2. <img src='http://g.recordit.co/wAlhaMEDRK.gif' title='Video Walkthrough' width='' alt='' />
+
 
 GIF created with [Recordit.co](https://recordit.co/).
 
