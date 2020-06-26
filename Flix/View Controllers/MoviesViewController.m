@@ -72,6 +72,7 @@
                }];
            }
            else {
+               // [self.activityIndicator stopAnimating];
                NSDictionary *dataDictionary = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
 
                // Get the array of movies and store in the property
@@ -117,12 +118,14 @@
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     UITableViewCell *tappedCell = sender;
+    // Pass the selected object to the new view controller.
     NSIndexPath *indexPath = [self.tableView indexPathForCell:tappedCell];
     NSDictionary *movie = self.movies[indexPath.row];
     // Get the new view controller using [segue destinationViewController].
     DetailsViewController *detailsViewController = [segue destinationViewController];
     detailsViewController.movie = movie;
-    // Pass the selected object to the new view controller.
+    // Delesecting the seleted row
+    [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 @end

@@ -67,7 +67,7 @@
                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="ggz-To-TyO">
                                 <rect key="frame" x="197" y="413" width="20" height="25"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="color" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="color" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -83,7 +83,7 @@
             </objects>
             <point key="canvasLocation" x="386.95652173913044" y="867.85714285714278"/>
         </scene>
-        <!--Grid View Controller-->
+        <!--Superheroes-->
         <scene sceneID="qNC-rs-TV7">
             <objects>
                 <viewController id="kLl-Fb-7Dq" customClass="GridViewController" sceneMemberID="viewController">
@@ -125,7 +125,7 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="ZIE-Ek-DkY"/>
                     </view>
-                    <navigationItem key="navigationItem" id="Q1P-nT-dRk"/>
+                    <navigationItem key="navigationItem" title="Superheroes" id="Q1P-nT-dRk"/>
                     <connections>
                         <outlet property="collectionView" destination="6Yp-AP-aNE" id="jbx-JS-Wb9"/>
                     </connections>
@@ -200,7 +200,7 @@
         <scene sceneID="Z8z-1U-9KL">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="5ad-6k-e6Q" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Now Playing" id="zZg-pW-Pzh"/>
+                    <tabBarItem key="tabBarItem" title="Now Playing" image="now_playing_tabbar_item" id="zZg-pW-Pzh"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="r0d-58-fpS">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -237,7 +237,7 @@
         <scene sceneID="IuN-Py-6zV">
             <objects>
                 <navigationController id="gKg-s6-Bya" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Superheroes" id="Es1-Af-Fya"/>
+                    <tabBarItem key="tabBarItem" title="Superheroes" image="superhero_tabbar_item" id="Es1-Af-Fya"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="NRV-AC-nCX">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -251,4 +251,8 @@
             <point key="canvasLocation" x="1990" y="136"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="now_playing_tabbar_item" width="21" height="21"/>
+        <image name="superhero_tabbar_item" width="21" height="23"/>
+    </resources>
 </document>
