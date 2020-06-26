@@ -18,6 +18,8 @@
 @property (nonatomic, strong) NSArray *movies;
 // Declaring property for refresh on scrolls
 @property (nonatomic, strong) UIRefreshControl *refreshControl;
+// Declaring property for Network alert
+@property (nonatomic, strong) UIAlertController *alert;
 
 @end
 
@@ -38,6 +40,20 @@
     [self.refreshControl addTarget:self action:@selector(fetchNetworkRequest) forControlEvents:UIControlEventValueChanged];
     [self.tableView insertSubview:self.refreshControl atIndex:0];
     
+    // Network Alert
+    self.alert = [UIAlertController alertControllerWithTitle:@"Cannot Get Movies"
+           message:@"No Internet Connection!"
+    preferredStyle:(UIAlertControllerStyleAlert)];
+    
+    UIAlertAction *tryAgain = [UIAlertAction actionWithTitle:@"Try Again"
+      style:UIAlertActionStyleCancel
+    handler:^(UIAlertAction * _Nonnull action) {
+        [self fetchNetworkRequest];
+    }];
+    // add the tryAgain action to the alertController
+    [self.alert addAction:tryAgain];
+    
+    
     
 }
 
@@ -49,6 +65,9 @@
     NSURLSessionDataTask *task = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
            if (error != nil) {
                NSLog(@"%@", [error localizedDescription]);
+               [self presentViewController:self.alert animated:YES completion:^{
+                   // optional code for what happens after the alert controller has finished presenting
+               }];
            }
            else {
                NSDictionary *dataDictionary = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
