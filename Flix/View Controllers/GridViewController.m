@@ -27,8 +27,12 @@
     [self fetchNetworkRequest];
     
     UICollectionViewFlowLayout *layout = (UICollectionViewFlowLayout *) self.collectionView.collectionViewLayout;
-    CGFloat postersPerLine = 1;
-    CGFloat itemWidth = layout.itemSize.width/postersPerLine;
+    
+    layout.minimumInteritemSpacing = 2.5;
+    layout.minimumLineSpacing = 2.5;
+    
+    CGFloat postersPerLine = 2;
+    CGFloat itemWidth = (self.collectionView.frame.size.width - layout.minimumInteritemSpacing * (postersPerLine - 1))/postersPerLine;
     
     layout.itemSize = CGSizeMake(itemWidth, itemWidth*1.5);
 }
