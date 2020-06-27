@@ -11,7 +11,7 @@
 #import "UIImageView+AFNetworking.h"
 #import "DetailsViewController.h"
 
-@interface MoviesViewController () <UITableViewDelegate, UITableViewDataSource>
+@interface MoviesViewController () <UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate>
 // tableView outlet
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 // Declaring property to store array of movies
@@ -21,6 +21,8 @@
 // Declaring property for Network alert
 @property (nonatomic, strong) UIAlertController *alert;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
+@property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
+@property (strong, nonatomic) NSArray *filteredMovies;
 
 @end
 
@@ -32,6 +34,7 @@
     //setting delegate and dataSource
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
+    self.searchBar.delegate = self;
     
     // fetching network request
     [self fetchNetworkRequest];
@@ -78,6 +81,9 @@
                // Get the array of movies and store in the property
                self.movies = dataDictionary[@"results"];
                
+               // filteredMovies array
+               self.filteredMovies = self.movies;
+               
                // Reloading the data after network request is completed
                [self.tableView reloadData];
            }
@@ -88,8 +94,8 @@
 }
 
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
-    MovieCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MovieCell"];
-    NSDictionary *movie = self.movies[indexPath.row];
+    MovieCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MovieCell" forIndexPath:indexPath];
+    NSDictionary *movie = self.filteredMovies[indexPath.row];
     cell.titleLabel.text = movie[@"title"];
     cell.descriptionLabel.text = movie[@"overview"];
     
@@ -109,7 +115,28 @@
 }
 
 - (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.movies.count;
+    return self.filteredMovies.count;
+}
+
+// Search Bar
+- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
+    
+    if (searchText.length != 0) {
+        
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:@("title contains[c] %@"), searchText];
+        self.filteredMovies = [self.movies filteredArrayUsingPredicate:predicate];
+        
+        NSLog(@"%@", predicate);
+        
+        NSLog(@"%@", self.filteredMovies);
+        
+    }
+    else {
+        self.filteredMovies = self.movies;
+    }
+    
+    [self.tableView reloadData];
+ 
 }
 
 
