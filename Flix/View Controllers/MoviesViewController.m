@@ -125,11 +125,6 @@
         
         NSPredicate *predicate = [NSPredicate predicateWithFormat:@("title contains[c] %@"), searchText];
         self.filteredMovies = [self.movies filteredArrayUsingPredicate:predicate];
-        
-        NSLog(@"%@", predicate);
-        
-        NSLog(@"%@", self.filteredMovies);
-        
     }
     else {
         self.filteredMovies = self.movies;
@@ -139,6 +134,23 @@
  
 }
 
+ - (void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar {
+     self.searchBar.showsCancelButton = YES;
+ }
+
+- (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar {
+    self.searchBar.showsCancelButton = NO;
+    self.searchBar.text = @"";
+    [self.searchBar resignFirstResponder];
+    [self fetchNetworkRequest];
+}
+
+- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
+    [searchBar resignFirstResponder];
+}
+//- (IBAction)onTap:(id)sender {
+//    [self.searchBar endEditing:YES];
+//}
 
 #pragma mark - Navigation
 

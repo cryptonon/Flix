@@ -76,6 +76,7 @@
                             </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <gestureRecognizers/>
                         <viewLayoutGuide key="safeArea" id="Awc-88-Bvo"/>
                     </view>
                     <navigationItem key="navigationItem" title="Movies" id="fKZ-GN-LrX"/>
