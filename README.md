@@ -16,6 +16,11 @@ The following **required** functionality is complete:
 - [X] User sees an error message when there's a networking error.
 - [X] User can tap a tab bar button to view a grid layout of Movie Posters using a CollectionView.
 
+The following **optional** features are implemented:
+
+- [X] User can tap a poster in the collection view to see a detail screen of that movie
+- [X] User can search for a movie.
+
 
 Please list two areas of the assignment you'd like to **discuss further with your peers** during the next class (examples include better ways to implement something, how to extend your app in certain ways, etc):
 
