@@ -9,6 +9,7 @@
 #import "GridViewController.h"
 #import "MovieCollectionCell.h"
 #import "UIImageView+AFNetworking.h"
+#import "GridDetailsViewController.h"
 
 @interface GridViewController () <UICollectionViewDelegate, UICollectionViewDataSource>
 @property (nonatomic, strong) NSArray *movies;
@@ -83,15 +84,22 @@
     return self.movies.count;
 }
 
-/*
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+    UICollectionViewCell *tappedCell = sender;
+    // Pass the selected object to the new view controller.
+    NSIndexPath *indexPath = [self.collectionView indexPathForCell:tappedCell];
+    NSDictionary *movie = self.movies[indexPath.item];
+    // Get the new view controller using [segue destinationViewController].
+    GridDetailsViewController *gridDetailsViewController = [segue destinationViewController];
+    gridDetailsViewController.movie = movie;
 }
-*/
+
 
 
 @end
