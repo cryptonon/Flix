@@ -2,7 +2,7 @@
 
 **Flix** is a movies app using the [The Movie Database API](http://docs.themoviedb.apiary.io/#).
 
-Time spent: **13** hours spent in total
+Time spent: **17** hours spent in total
 
 ## User Stories
 
@@ -34,6 +34,8 @@ Here's a walkthrough of implemented user stories:
 1. <img src='http://g.recordit.co/AwLxcxBeUP.gif' title='Network Error and Loading' width='' alt='' />
 
 2. <img src='http://g.recordit.co/wAlhaMEDRK.gif' title='Video Walkthrough' width='' alt='' />
+
+3. <img src='http://g.recordit.co/fo2mUG4TTQ.gif' title='Video Walkthrough' width='' alt='' />
 
 
 GIF created with [Recordit.co](https://recordit.co/).
